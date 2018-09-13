@@ -47,5 +47,11 @@ sync_finished
     <br>
 </div>
 
+## 完整演示
+<br>
+<div align="center">
+    <img src="./img/harbor-replicating-images.gif" width="1024px">
+    <br>
+</div>
 
 
