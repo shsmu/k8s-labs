@@ -64,4 +64,45 @@ Configuration parameters are located in the file **harbor.cfg**.
     # ./install.sh
 ```
 
+### Managing Harbor's lifecycle
+You can use docker-compose to manage the lifecycle of Harbor. Some useful commands are listed as follows (must run in the same directory as *docker-compose.yml*).
 
+Stopping Harbor:
+```
+# docker-compose stop
+Stopping nginx ... done
+Stopping harbor-jobservice ... done
+Stopping harbor-ui ... done
+Stopping harbor-db ... done
+Stopping registry ... done
+Stopping harbor-log ... done
+```  
+Restarting Harbor after stopping:
+```
+# docker-compose start
+Starting log ... done
+Starting ui ... done
+Starting mysql ... done
+Starting jobservice ... done
+Starting registry ... done
+Starting proxy ... done
+```  
+
+To change Harbor's configuration, first stop existing Harbor instance and update ```harbor.cfg```. Then run ```prepare``` script to populate the configuration. Finally re-create and start Harbor's instance:
+```
+# docker-compose down -v
+# vim harbor.cfg
+# prepare
+# docker-compose up -d
+``` 
+
+Removing Harbor's containers while keeping the image data and Harbor's database files on the file system:
+```
+# docker-compose down -v
+```  
+
+Removing Harbor's database and image data (for a clean re-installation):
+```sh
+# rm -r /data/database
+# rm -r /data/registry
+```
