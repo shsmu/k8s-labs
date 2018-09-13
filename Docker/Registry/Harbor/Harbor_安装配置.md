@@ -8,6 +8,7 @@
 |prod-ops-harbor-01|192.168.1.251|CentOS 7|2C/4G/200GB|
 |prod-ops-harbor-02|192.168.1.252|CentOS 7|2C/4G/200GB|
 
+**[Hyper-V](https://github.com/shsmu/k8s-labs/blob/master/Hyper-V/PowerShell/create_vm_harbor.ps1)**
 ### Software
 |Software|Version|Description|
 |---|---|---|
