@@ -63,6 +63,21 @@ Configuration parameters are located in the file **harbor.cfg**.
 ```
     # ./install.sh
 ```
+### Test
+```
+# docker login registry.sanyu.com
+Username: admin
+Password: 
+Login Succeeded
+# docker tag nginx registry.sanyu.com/house/nginx:latest
+# docker push registry.sanyu.com/house/nginx:latest
+The push refers to a repository [registry.sanyu.com/house/nginx]
+579c75bb43c0: Pushed 
+67d3ae5dfa34: Pushed 
+8b15606a9e3e: Pushed 
+latest: digest: sha256:c0b69559d28fb325a64c6c8f47d14c26b95aa047312b29c699da10380e90b4d7 size: 948
+```
+
 
 ### Managing Harbor's lifecycle
 You can use docker-compose to manage the lifecycle of Harbor. Some useful commands are listed as follows (must run in the same directory as *docker-compose.yml*).
