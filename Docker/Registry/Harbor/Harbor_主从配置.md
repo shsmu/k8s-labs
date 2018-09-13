@@ -19,31 +19,31 @@ Images replication is used to replicate repositories from one Harbor instance to
 add_new_project
 <br>
 <div align="center">
-    <img src="../img/add_new_project.png" width="1024px">
+    <img src="./img/add_new_project.png" width="1024px">
     <br>
 </div>
 add_new_repo
 <br>
 <div align="center">
-    <img src="../img/add_new_repo.png" width="1024px">
+    <img src="./img/add_new_repo.png" width="1024px">
     <br>
 </div>
 add_new_rules
 <br>
 <div align="center">
-    <img src="../img/add_new_rules.png" width="1024px">
+    <img src="./img/add_new_rules.png" width="1024px">
     <br>
 </div>
 syncing
 <br>
 <div align="center">
-    <img src="../img/sync.png" width="1024px">
+    <img src="./img/sync.png" width="1024px">
     <br>
 </div>
 sync_finished
 <br>
 <div align="center">
-    <img src="../img/sync_finished.png" width="1024px">
+    <img src="./img/sync_finished.png" width="1024px">
     <br>
 </div>
 
