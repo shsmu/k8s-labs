@@ -38,31 +38,32 @@ The binary of the installer can be downloaded from the [release](https://github.
 
 Offline installer:
 ```
-    # yum -y install epel-release
-    # yum -y install docker docker-compose
-    # cat <<EOF > /etc/docker/daemon.json 
-      {
-        "registry-mirrors": ["https://registry.docker-cn.com"]
-      }
-      EOF
-    # service docker start
-    # wget https://storage.googleapis.com/harbor-releases/harbor-offline-installer-v1.5.3.tgz
-    # tar xvf harbor-offline-installer-v1.5.3.tgz     
+# yum -y install epel-release
+# yum -y install docker docker-compose
+# cat <<EOF > /etc/docker/daemon.json 
+{
+    "registry-mirrors": ["https://registry.docker-cn.com"],
+    "insecure-registries": ["registry.sanyu.com", "prod-ops-harbor-01.sanyu.com", "prod-ops-harbor-02.sanyu.com"]
+}
+EOF
+# service docker start
+# wget https://storage.googleapis.com/harbor-releases/harbor-offline-installer-v1.5.3.tgz
+# tar xvf harbor-offline-installer-v1.5.3.tgz     
 ```
 
 #### Configuring Harbor
 Configuration parameters are located in the file **harbor.cfg**. 
 ```
-    # cd harbor
-    # cp harbor.cfg{,.bak}
-    # sed -i 's/hostname = reg.mydomain.com/hostname = registry.sanyu.com/' harbor.cfg 
-    # sed -i 's/harbor_admin_password = Harbor12345/harbor_admin_password = sanyu/' harbor.cfg 
-    # sed -i 's/db_password = root123/db_password = sanyu/' harbor.cfg 
+# cd harbor
+# cp harbor.cfg{,.bak}
+# sed -i "s/hostname = reg.mydomain.com/hostname = ${HOSTNAME}/" harbor.cfg 
+# sed -i 's/harbor_admin_password = Harbor12345/harbor_admin_password = sanyu/' harbor.cfg 
+# sed -i 's/db_password = root123/db_password = sanyu/' harbor.cfg 
 ```
 
 #### Runing Harbor
 ```
-    # ./install.sh
+# ./install.sh
 ```
 ### Test
 ```
