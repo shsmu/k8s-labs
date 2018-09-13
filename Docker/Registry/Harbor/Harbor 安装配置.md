@@ -52,6 +52,7 @@ Offline installer:
 #### Configuring Harbor
 Configuration parameters are located in the file **harbor.cfg**. 
 ```
+    # cd harbor
     # cp harbor.cfg{,.bak}
     # sed -i 's/hostname = reg.mydomain.com/hostname = registry.sanyu.com/' harbor.cfg 
     # sed -i 's/harbor_admin_password = Harbor12345/harbor_admin_password = sanyu/' harbor.cfg 
