@@ -65,6 +65,21 @@ Configuration parameters are located in the file **harbor.cfg**.
 ```
 # ./install.sh
 ```
+
+### Sync Certs
+All nodes:
+```
+# scp /usr/local/harbor/common/config/registry/root.crt prod-ops-harbor-02:/usr/local/harbor/common/config/registry/root.crt
+# scp /usr/local/harbor/common/config/ui/private_key.pem  prod-ops-harbor-02:/usr/local/harbor/common/config/ui/private_key.pem 
+```
+[Troubleshooting:](https://tonybai.com/2017/10/23/the-speech-script-practice-on-deploying-a-ha-harbor-cluster-for-osc-shenyang-2017/)
+```
+[root@prod-ops-harbor-01 ~]# docker login prod-ops-harbor-02.sanyu.com
+Username: admin
+Password: 
+Error response from daemon: login attempt to http://prod-ops-harbor-02.sanyu.com/v2/ failed with status: 401 Unauthorized
+```
+
 ### Test
 ```
 # docker login registry.sanyu.com
