@@ -1,3 +1,4 @@
+# 以管理员身份运行
 set-executionpolicy remotesigned
 
 

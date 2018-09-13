@@ -1,3 +1,4 @@
+# 以管理员身份运行
 set-executionpolicy remotesigned
 
 $a = 10,11,20,21,30,31,40,41,50,51
