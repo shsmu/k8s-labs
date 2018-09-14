@@ -18,7 +18,9 @@
 
 1. Ceph 集群搭建;
 2. 所有节点挂载共享存储;
-3. 修改 harbor.cfg 配置使用独立的 Redis 和 MySQL;
+3. 安装单机版 Harbor
+4. 修改 harbor.cfg 配置数据目录;
+5. 修改 harbor.cfg 配置使用独立的 Redis 和 MySQL;
 
 ### Ceph 集群搭建
 #### Ceph-deploy Setup¶
@@ -172,5 +174,46 @@ Add two Ceph Monitors to your cluster:
 # mkdir -p /mnt/cephfs/harbor
 ```
 
+### [Install Harbor](https://github.com/shsmu/k8s-labs/blob/master/Docker/Registry/Harbor/Harbor_安装配置.md)
+```
+# 先解决依赖
+# yum install http://www.rpmfind.net/linux/centos/7.5.1804/os/x86_64/Packages/policycoreutils-python-2.5-22.el7.x86_64.rpm
+```
 
+
+### 
+
+Dump db
+```
+[root@prod-ops-harbor-01 harbor]# docker exec -it `docker ps | grep 'vmware/harbor-db' | awk '{print $1}'` bash
+root [ / ]# mysqldump -u root -p --databases registry > registry.dump
+Enter password: 
+root [ / ]# exit
+[root@prod-ops-harbor-01 harbor]# docker cp `docker ps | grep 'vmware/harbor-db' | awk '{print $1}'`:/registry.dump /tmp/
+```
+
+* Prepare a mysql server  
+```
+# yum -y install mariadb mariadb-server
+# systemctl restart mariadb
+# mysql -e "drop user root@'::1';drop user root@'localhost';drop user root@'prod-ops-harbor-01.sanyu.com';drop user ''@'localhost';drop user ''@'prod-ops-harbor-01.sanyu.com'"
+# mysql -e "grant all on registry.* to root@'%' identified by 'sanyu';"
+```
+
+* Import db
+```
+# mysql -uroot -p -h 192.168.1.251 < /tmp/registry.dump
+```
+
+* Prerpare a redis server
+```
+# docker pull redis
+# docker run -d -p 6379:6379 redis
+```
+
+参考文档：
+
+[harbor 高可用部署](https://blog.csdn.net/u012473280/article/details/73302741)
+
+[harbor 基于 Harbor 和 CephFS 搭建高可用Private Registry](https://blog.csdn.net/u012473280/article/details/73302741)
 
