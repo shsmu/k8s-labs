@@ -43,7 +43,7 @@ Offline installer:
 # cat <<EOF > /etc/docker/daemon.json 
 {
     "registry-mirrors": ["https://registry.docker-cn.com"],
-    "insecure-registries": ["registry.sanyu.com", "prod-ops-harbor-01.sanyu.com", "prod-ops-harbor-02.sanyu.com"]
+    "insecure-registries": ["registry.sanyu.com", "prod-ops-harbor-01.sanyu.com", "prod-ops-harbor-02.sanyu.com", "prod-ops-harbor-03.sanyu.com"]
 }
 EOF
 # service docker start
