@@ -181,39 +181,63 @@ Add two Ceph Monitors to your cluster:
 ```
 
 
-### 
+#### Use host network
+* prod-ops-harbor-01
 
-Dump db
 ```
-[root@prod-ops-harbor-01 harbor]# docker exec -it `docker ps | grep 'vmware/harbor-db' | awk '{print $1}'` bash
-root [ / ]# mysqldump -u root -p --databases registry > registry.dump
-Enter password: 
-root [ / ]# exit
-[root@prod-ops-harbor-01 harbor]# docker cp `docker ps | grep 'vmware/harbor-db' | awk '{print $1}'`:/registry.dump /tmp/
+# vi docker-compose.yml 
+# for mysql
+    ports:
+      - 3306:3306
+# for redis    
+    ports:
+      - 6379:6379    
 ```
+*  prod-ops-harbor-02 and  prod-ops-harbor-03
 
-* Prepare a mysql server  
 ```
-# yum -y install mariadb mariadb-server
-# systemctl restart mariadb
-# mysql -e "drop user root@'::1';drop user root@'localhost';drop user root@'prod-ops-harbor-01.sanyu.com';drop user ''@'localhost';drop user ''@'prod-ops-harbor-01.sanyu.com'"
-# mysql -e "grant all on registry.* to root@'%' identified by 'sanyu';"
-```
-
-* Import db
-```
-# mysql -uroot -p -h 192.168.1.251 < /tmp/registry.dump
-```
-
-* Prerpare a redis server
-```
-# docker pull redis
-# docker run -d -p 6379:6379 redis
+# vi docker-compose.yml 
+# remove:   
+      mysql:
+       ...
+      redis:
+       ...
+# remove:
+      depends_on:
+        - mysql
+      depends_on:
+        - redis
 ```
 
-参考文档：
+#### Change MySQL host (all nodes)
+```
+# vi common/templates/adminserver/env 
+MYSQL_HOST=192.168.1.251
+```
 
-[harbor 高可用部署](https://blog.csdn.net/u012473280/article/details/73302741)
+#### Change redis url (all nodes)
+```
+# vi common/templates/ui/env 
+_REDIS_URL=192.168.1.251
+```
 
-[harbor 基于 Harbor 和 CephFS 搭建高可用Private Registry](https://blog.csdn.net/u012473280/article/details/73302741)
+
+#### Update (all nodes)
+```
+# sed -i "s@- /data@- /mnt/cephfs/harbor@g" docker-compose.yml
+# sed -i 's@secretkey_path = /data@secretkey_path = /mnt/cephfs/harbor/@' harbor.cfg
+# docker-compose 
+# ./prepare 
+# docker-compose up -d
+# docker-compose start
+```
+* secretkey_path必须和docker-compose.yml中设置的相关，不然启动adminserver的时候会报错：“[FATAL] [main.go:46]: failed to initialize the system: read /etc/adminserver/key: is a directory”
+
+### 效果演示
+<br>
+<div align="center">
+    <img src="./img/Harbor_Ceph.gif" width="1024px">
+    <br>
+</div>
+
 
