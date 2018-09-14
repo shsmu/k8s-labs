@@ -1,7 +1,7 @@
 # 以管理员身份运行
 set-executionpolicy remotesigned
 
-$a = 1,2
+$a = 1,2，3
 foreach($i in $a){
 
 $VMName = "Harbor-0" + $i
