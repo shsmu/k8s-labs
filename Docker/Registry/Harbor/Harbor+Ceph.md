@@ -8,11 +8,31 @@
 
 ## Env
 ### Hosts
-|Hostname|Ip|OS|Resource|
-|---|---|---|---|
-|prod-ops-harbor-01|192.168.1.251|CentOS 7|2C/4G/20+200GB|
-|prod-ops-harbor-02|192.168.1.252|CentOS 7|2C/4G/20+200GB|
-|prod-ops-harbor-03|192.168.1.253|CentOS 7|2C/4G/20+200GB|
+|Hostname|Ip|OS|Resource|Roles|
+|---|---|---|---|---|
+|prod-ops-harbor-01|192.168.1.251|CentOS 7|2C/4G/20+200GB|harbor、ceph、mysql、redis|
+|prod-ops-harbor-02|192.168.1.252|CentOS 7|2C/4G/20+200GB|harbor、ceph|
+|prod-ops-harbor-03|192.168.1.253|CentOS 7|2C/4G/20+200GB|harbor、ceph|
+
+### Shared Storage
+```
+# ceph -s
+  cluster:
+    id:     687a6ee3-d36f-44fd-9049-debca1e1b60d
+    health: HEALTH_OK
+ 
+  services:
+    mon: 1 daemons, quorum prod-ops-harbor-01
+    mgr: prod-ops-harbor-01(active)
+    mds: cephfs-1/1/1 up  {0=prod-ops-harbor-01=up:active}
+    osd: 9 osds: 3 up, 3 in
+ 
+  data:
+    pools:   2 pools, 192 pgs
+    objects: 168  objects, 73 MiB
+    usage:   3.2 GiB used, 597 GiB / 600 GiB avail
+    pgs:     192 active+clean
+```
 
 ## Steps
 
