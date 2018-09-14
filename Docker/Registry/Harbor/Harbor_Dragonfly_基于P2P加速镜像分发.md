@@ -1,4 +1,4 @@
-# Harbor Dragonfly 基于 P2P 加速分发
+# Harbor Dragonfly 基于 P2P 加速镜像分发
 <br>
 <div align="center">
     <img src="./img/dfget-combine-container.png" width="1024px">
@@ -47,5 +47,5 @@ EOF
 
 ### Use Dragonfly to Pull an Image
 ```
-
+# docker pull project01/nginx:latest
 ```
