@@ -42,6 +42,10 @@ EOF
 ```
 # nohup dfdaemon --registry http://registry.sanyu.com -ratelimit 600M &
 # sed -i 's@https://registry.docker-cn.com@http://127.0.0.1:65001@' /etc/docker/daemon.json
+# like this:
+{
+    "registry-mirrors": ["http://127.0.0.1:65001"]
+}
 # systemctl daemon-reload
 # systemctl restart docker
 ```
@@ -62,10 +66,11 @@ Environment=GOTRACEBACK=crash DOCKER_HTTP_HOST_COMPAT=1 PATH=/usr/libexec/docker
 ```
 
 ### Use Dragonfly to Pull an Image
+Actually  pull from "registry.sanyu.com" not "docker.io"
 ```
-# docker pull registry.sanyu.com/project01/harbor-db:v1.5.3
-Trying to pull repository registry.sanyu.com/project01/harbor-db ... 
-v1.5.3: Pulling from registry.sanyu.com/project01/harbor-db
-Digest: sha256:6df6298fa64ecbc067f7b382eb95749c27ccfd37db1f2bb3a2c0bdb2b69dee0b
-Status: Downloaded newer image for registry.sanyu.com/project01/harbor-db:v1.5.3
+# docker pull project01/alidragonfly
+Using default tag: latest
+Trying to pull repository docker.io/project01/alidragonfly ... 
+latest: Pulling from docker.io/project01/alidragonfly
+7dc0dca2b151: Pulling fs layer 
 ```
