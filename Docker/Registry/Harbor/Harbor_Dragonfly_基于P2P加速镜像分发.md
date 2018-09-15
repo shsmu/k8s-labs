@@ -36,16 +36,36 @@ docker run -d -p 8001:8001 -p 8002:8002 ${imageName}
 address=dragonfly.sanyu.com,dragonfly02.sanyu.com,dragonfly03.sanyu.com
 EOF
 ```
-### Config Container Daemon
+
+### 方式一： Config Container Daemon
+* 启动 dfget proxy(即 df-damoen)  launch dfdaemon on port:65001(default)
+```
+# nohup dfdaemon --registry http://registry.sanyu.com -ratelimit 600M &
+# sed -i 's@https://registry.docker-cn.com@http://127.0.0.1:65001@' /etc/docker/daemon.json
+# systemctl daemon-reload
+# systemctl restart docker
+```
+
+### 方式二： HTTP 代理服务模式 (not works )
 * 启动 dfget proxy(即 df-damoen)  launch dfdaemon on port:65001(default)
 ```
 # nohup dfdaemon --registry https://registry.sanyu.com -ratelimit 600M &
-# sed -i 's@https://registry.docker-cn.com@http://127.0.0.1:65001@' /etc/docker/daemon.json
+# mkdir -p /etc/systemd/system/docker.service.d
+# cat <<EOF > /etc/systemd/system/docker.service.d/http-proxy.conf 
+[Service]
+Environment="HTTP_PROXY=http://127.0.0.1:65001"
+EOF
+# systemctl daemon-reload
 # systemctl restart docker
-
+# systemctl show --property=Environment docker
+Environment=GOTRACEBACK=crash DOCKER_HTTP_HOST_COMPAT=1 PATH=/usr/libexec/docker:/usr/bin:/usr/sbin HTTP_PROXY=http://127.0.0.1:65001
 ```
 
 ### Use Dragonfly to Pull an Image
 ```
-# docker pull project01/nginx:latest
+# docker pull registry.sanyu.com/project01/harbor-db:v1.5.3
+Trying to pull repository registry.sanyu.com/project01/harbor-db ... 
+v1.5.3: Pulling from registry.sanyu.com/project01/harbor-db
+Digest: sha256:6df6298fa64ecbc067f7b382eb95749c27ccfd37db1f2bb3a2c0bdb2b69dee0b
+Status: Downloaded newer image for registry.sanyu.com/project01/harbor-db:v1.5.3
 ```
