@@ -1,0 +1,14 @@
+[mons]
+prod-k8s-ceph-[01:03].sanyu.com
+
+[osds]
+prod-k8s-ceph-[01:05].sanyu.com
+
+[mds]
+prod-k8s-ceph-[01:03].sanyu.com
+
+[rgws]
+prod-k8s-ceph-05.sanyu.com
+
+[mgrs]
+prod-k8s-ceph-[01:02].sanyu.com
