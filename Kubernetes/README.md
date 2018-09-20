@@ -34,7 +34,7 @@
         - [ ] 2.3.2 查看 Deployment 详情
         - [ ] 2.3.3 查看 Deployment Pod 标签
         - [ ] 2.3.4 修改某个副本的标签       
-        - [ ] 2.3.5 再次查看 Deployment 详情 
+        - [ ] 2.3.5 再次查看 Deployment 详情
                 
     - [ ] 2.4 创建 Service
         - [ ] 2.4.1 创建一个 Service
@@ -42,18 +42,36 @@
         - [ ] 2.4.3 修改 Service 类型为 NodePort
         - [ ] 2.4.4 再次查看 Service，NodePort 访问验证可用性
         
-    - [ ] 2.5  Deployment rolling updates
-        - [ ] 2.5.1 升级一个 Deployment 下的镜像版本
-        - [ ] 2.5.2 查看升级记录历史
-        - [ ] 2.5.3 记录一次升级记录
-        - [ ] 2.5.4 滚动升级并再次查看       
-            
-    - [ ] 2.6  Deployment rollbacks
-        - [ ] 2.6.1  查看升级记录历史
-        - [ ] 2.6.2  回滚到上一个版本
-        - [ ] 2.6.3  回滚到一个指定版本
-        - [ ] 2.6.4  实时监控回滚过程       
+    - [ ] 2.5  Label and Selector
+        - [ ] 2.5.1 创建一个 Service
+        - [ ] 2.5.2 查看 Service
+        - [ ] 2.5.3 查看 endpoint
+        - [ ] 2.5.4 查看 Selector      
         
+    - [ ] 2.6  Deployment rolling updates
+        - [ ] 2.6.1 升级一个 Deployment 下的镜像版本
+        - [ ] 2.6.2 查看升级记录历史
+        - [ ] 2.6.3 记录一次升级记录
+        - [ ] 2.6.4 滚动升级并再次查看       
+            
+    - [ ] 2.7  Deployment rollbacks
+        - [ ] 2.7.1  查看升级记录历史
+        - [ ] 2.7.2  回滚到上一个版本
+        - [ ] 2.7.3  回滚到一个指定版本
+        - [ ] 2.7.4  实时监控回滚过程       
+    
+    - [ ] 2.8  Scale applications
+        - [ ] 2.8.1  增加副本数量到10 
+        - [ ] 2.8.2  观察 Pods 数量变化
+    
+    - [ ] 2.9  Self-healing application
+        - [ ] 2.9.1  Kill Pods       
+        - [ ] 2.9.2  实时监控 Pods       
+        - [ ] 2.9.3  关闭一个 Node 模拟主机故障
+        - [ ] 2.9.4  观察实例变化
+        
+    
+    
         
         
         
