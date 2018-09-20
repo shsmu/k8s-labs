@@ -20,7 +20,21 @@
 ## CKA labs
 
 - [ ] 1 [12% - Installation, Conﬁguration & Validation](https://github.com/shsmu/k8s-labs)
-- [ ] 2 [19% - Core Concepts]()                
+ * Design a Kubernetes cluster.
+ * Install Kubernetes masters and nodes, including the use of TLS bootstrapping.
+ * Conﬁgure secure cluster communications.   
+ * Conﬁgure a Highly-Available Kubernetes cluster.
+ * Know where to get the Kubernetes  release binaries.
+ * Provision underlying infrastructure to deploy a Kubernetes cluster.
+ * Choose a network solution.
+ * Choose your Kubernetes  infrastructure conﬁguration.
+ * Run end-to-end tests on your cluster.
+ * Analyse end-to-end tests results.
+ * Run Node end-to-end tests.
+- [ ] 2 [19% - Core Concepts]() 
+ * Understand the Kubernetes API primitives.
+ * Understand the Kubernetes cluster architecture.
+ * Understand Services and other  network primitives.
     - [ ] 2.1 Namespace 
         - [ ] 2.1.1 创建 Namespace 
         - [ ] 2.1.2 查看 Namespace 
@@ -55,6 +69,10 @@
         - [ ] 2.10.4 测试                  
 
 - [ ] 3 [8% - Application Lifecycle Management]()
+ * Understand Deployments and how to perform rolling updates and rollbacks.
+ * Know various ways to conﬁgure applications.
+ * Know how to scale applications.
+ * Understand the primitives necessary to create a self-healing application
     - [ ] 3.1  Deployment rolling updates
         - [ ] 3.1.1 升级一个 Deployment 下的镜像版本
         - [ ] 3.1.2 查看升级记录历史
@@ -78,6 +96,12 @@
         - [ ] 3.4.4  观察 endpoint 变化          
          
 - [ ] 4 [7% - Storage]() 
+ * Understand persistent volumes and know how to create them.
+ * Understand access modes for volumes.
+ * Understand persistent volume claims primitive.
+ * Understand Kubernetes storage objects.
+ * Know how to conﬁgure applications with persistent storage.
+
     - [ ] 4.1  Volumes
         - [ ] 4.1.1 创建一个 Pod 包含 Nginx 和 Busybox 两个容器并且挂载同一个 emptyDir   
         - [ ] 4.1.2 查看两个容器挂载卷目录 
@@ -102,9 +126,42 @@
         - [ ] 4.13.7 进入两个容器查看是否是各自挂载的文件内容              
                
           
-- [ ] 5 [5% - Scheduling]()               
+- [ ] 5 [5% - Scheduling]()
+ * Use label selectors to schedule Pods.
+ * Understand the role of DaemonSets.
+ * Understand how resource limits can affect Pod scheduling.
+ * Understand how to run multiple schedulers and how to conﬁgure Pods to use them.
+ * Manually schedule a pod without  a scheduler.
+ * Display scheduler events.
+ * Know how to conﬁgure the  Kubernetes scheduler.               
 - [ ] 6 [11% - Networking]()
-- [ ] 7 [12% - Security]() 
-- [ ] 8 [5% - Logging/Monitoring]()    
+ * Understand the networking conﬁguration on the cluster nodes.
+ * Understand Pod networking concepts.
+ * Understand service networking.
+ * Deploy and conﬁgure network load balancer. 
+ * Know how to use Ingress rules.
+ * Know how to conﬁgure and use the  cluster DNS.
+ * Understand CNI.
+- [ ] 7 [12% - Security]()
+ * Know how to conﬁgure authentication  and authorization.
+ * Understand Kubernetes security primitives.
+ * Know to conﬁgure network policies.
+ * Create and manage TLS certiﬁcates for cluster components.
+ * Work with images securely.
+ * Deﬁne security contexts.
+ * Secure persistent key value store.
+ * Work with role-based access control.
+- [ ] 8 [5% - Logging/Monitoring]()
+ * Understand how to monitor all  cluster components.
+ * Understand how to monitor applications.
+ * Manage cluster component logs.
+ * Manage application logs
 - [ ] 9 [11% - Cluster Maintenance]() 
+ * Understand Kubernetes cluster  upgrade process.
+ * Facilitate operating system upgrades.
+ * Implement backup and restore methodologies
 - [ ] 10 [10% - Troubleshooting]() 
+ * Troubleshoot application failure.
+ * Troubleshoot control plane failure.
+ * Troubleshoot worker node failure.
+ * Troubleshoot networking.
