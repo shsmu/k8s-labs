@@ -31,6 +31,7 @@
  * Run end-to-end tests on your cluster.
  * Analyse end-to-end tests results.
  * Run Node end-to-end tests.
+   - [ ] 1.1 [One Master With Two Nodes](CKA/Installation_Configuration_Validation/One_Master_With_Two_Nodes.md)
 - [ ] 2 [19% - Core Concepts]() 
  * Understand the Kubernetes API primitives.
  * Understand the Kubernetes cluster architecture.
