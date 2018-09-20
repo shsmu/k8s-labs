@@ -101,7 +101,6 @@
  * Understand persistent volume claims primitive.
  * Understand Kubernetes storage objects.
  * Know how to conﬁgure applications with persistent storage.
-
     - [ ] 4.1  Volumes
         - [ ] 4.1.1 创建一个 Pod 包含 Nginx 和 Busybox 两个容器并且挂载同一个 emptyDir   
         - [ ] 4.1.2 查看两个容器挂载卷目录 
