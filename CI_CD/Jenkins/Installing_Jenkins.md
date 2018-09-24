@@ -28,8 +28,10 @@ docker run \
 
 Unlocking Jenkins
 
-1、Browse to http://localhost:8080 (or whichever port you configured for Jenkins when installing it) and wait until the Unlock Jenkins page appears.
+1、Browse to http://ci.sanyu.com:8080 (or whichever port you configured for Jenkins when installing it) and wait until the Unlock Jenkins page appears.
 
 2、From the Jenkins console log output, copy the automatically-generated alphanumeric password (between the 2 sets of asterisks).
-
+```
+# docker logs `docker ps | grep -v CONTAINER| head -n 1| awk '{print $1}'` | grep -A 1 "Please use the following password to proceed to installation:"
+```
 3、On the Unlock Jenkins page, paste this password into the Administrator password field and click Continue.
